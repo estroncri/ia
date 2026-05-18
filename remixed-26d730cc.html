@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 5 IAs 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --black:#080808;
+  --off-black:#111111;
+  --card-bg:#141414;
+  --surface:#1c1c1c;
+  --border:#2a2a2a;
+  --border-light:#333333;
+  --text:#f0f0f0;
+  --text-2:#a0a0a0;
+  --text-3:#5a5a5a;
+  --white:#ffffff;
+  --accent:#e8e8e8;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--black);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* subtle dot grid */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:28px 28px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 3.5rem;
+  height:64px;
+  background:rgba(8,8,8,0.92);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.25rem;
+  color:var(--white);
+  text-decoration:none;
+  letter-spacing:0.02em;
+}
+
+nav ul{display:flex;gap:2.5rem;list-style:none}
+
+nav a{
+  color:var(--text-3);
+  text-decoration:none;
+  font-size:0.75rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:500;
+  transition:color 0.25s;
+}
+nav a:hover{color:var(--text)}
+
+/* HERO */
+.hero{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:7rem 2rem 5rem;
+}
+
+.hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.7rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:2.5rem;
+  opacity:0;
+  animation:fadeUp 0.8s 0.1s ease forwards;
+}
+
+.hero-eyebrow span{
+  display:inline-block;
+  width:20px;
+  height:1px;
+  background:var(--text-3);
+}
+
+.hero h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(3.5rem,7vw,6.5rem);
+  font-weight:400;
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--white);
+  margin-bottom:2rem;
+  opacity:0;
+  animation:fadeUp 0.9s 0.2s ease forwards;
+}
+
+.hero h1 em{
+  font-style:italic;
+  color:var(--text-2);
+}
+
+.hero-desc{
+  max-width:480px;
+  color:var(--text-2);
+  font-size:0.95rem;
+  line-height:1.9;
+  margin-bottom:3.5rem;
+  opacity:0;
+  animation:fadeUp 0.9s 0.35s ease forwards;
+}
+
+.hero-actions{
+  display:flex;
+  gap:1rem;
+  opacity:0;
+  animation:fadeUp 0.9s 0.5s ease forwards;
+}
+
+.btn{
+  padding:12px 28px;
+  font-size:0.75rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+  transition:all 0.25s;
+  cursor:pointer;
+  border:none;
+}
+
+.btn-solid{
+  background:var(--white);
+  color:var(--black);
+}
+.btn-solid:hover{background:var(--text-2);transform:translateY(-1px)}
+
+.btn-ghost{
+  background:transparent;
+  color:var(--text-2);
+  border:1px solid var(--border-light);
+}
+.btn-ghost:hover{border-color:var(--text-2);color:var(--white)}
+
+/* SCROLL LINE */
+.scroll-line{
+  position:absolute;
+  bottom:2.5rem;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  opacity:0;
+  animation:fadeUp 0.8s 0.9s ease forwards;
+}
+
+.scroll-line span{
+  font-size:0.65rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--text-3);
+}
+
+.scroll-line::after{
+  content:'';
+  width:1px;
+  height:40px;
+  background:linear-gradient(to bottom, var(--text-3), transparent);
+  animation:lineGrow 1.5s 1.2s ease forwards;
+  transform-origin:top;
+  transform:scaleY(0);
+}
+
+@keyframes lineGrow{to{transform:scaleY(1)}}
+
+/* DIVIDER LINE */
+.rule{
+  position:relative;z-index:1;
+  height:1px;
+  background:var(--border);
+}
+
+/* STATS BAR */
+.stats{
+  position:relative;z-index:1;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.stat{
+  padding:2.5rem;
+  border-right:1px solid var(--border);
+  border-top:1px solid var(--border);
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.stat:last-child{border-right:none}
+.stat.vis{opacity:1;transform:none}
+
+.stat-n{
+  font-family:'DM Serif Display',serif;
+  font-size:2.4rem;
+  color:var(--white);
+  display:block;
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-bottom:8px;
+}
+.stat-l{
+  font-size:0.7rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--text-3);
+}
+
+/* SECTIONS */
+.section{
+  position:relative;z-index:1;
+  max-width:960px;
+  margin:0 auto;
+  padding:7rem 2rem;
+}
+
+.sec-eyebrow{
+  font-size:0.68rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:1.25rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.sec-eyebrow::before{
+  content:'';
+  display:inline-block;
+  width:24px;height:1px;
+  background:var(--text-3);
+}
+
+.sec-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:400;
+  color:var(--white);
+  letter-spacing:-0.02em;
+  line-height:1.15;
+  margin-bottom:1rem;
+}
+
+.sec-sub{
+  color:var(--text-2);
+  font-size:0.9rem;
+  max-width:500px;
+  margin-bottom:5rem;
+  line-height:1.9;
+}
+
+/* AI CARDS */
+.ai-card{
+  position:relative;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  padding:3rem;
+  margin-bottom:1.5px;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.7s ease, transform 0.7s ease, border-color 0.3s;
+}
+
+.ai-card:first-of-type{border-radius:2px 2px 0 0}
+.ai-card:last-of-type{border-radius:0 0 2px 2px; margin-bottom:0}
+
+.ai-card.vis{opacity:1;transform:none}
+.ai-card:hover{border-color:var(--border-light)}
+
+/* top accent line */
+.ai-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:var(--white);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.6s ease;
+}
+.ai-card:hover::before{transform:scaleX(1)}
+
+.card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:2rem;
+  margin-bottom:2.5rem;
+}
+
+.card-left{display:flex;align-items:flex-start;gap:2rem}
+
+.rank-num{
+  font-family:'DM Serif Display',serif;
+  font-size:4.5rem;
+  color:var(--border-light);
+  line-height:1;
+  letter-spacing:-0.03em;
+  flex-shrink:0;
+  user-select:none;
+  transition:color 0.3s;
+}
+.ai-card:hover .rank-num{color:var(--text-3)}
+
+.card-meta{}
+.card-cat{
+  font-size:0.65rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:6px;
+}
+.card-name{
+  font-family:'DM Serif Display',serif;
+  font-size:2rem;
+  color:var(--white);
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-bottom:4px;
+}
+.card-maker{
+  font-size:0.8rem;
+  color:var(--text-3);
+}
+
+.card-btn{
+  padding:10px 22px;
+  border:1px solid var(--border-light);
+  color:var(--text-2);
+  text-decoration:none;
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+  white-space:nowrap;
+  transition:all 0.25s;
+  flex-shrink:0;
+  margin-top:6px;
+}
+.card-btn:hover{border-color:var(--text);color:var(--white);background:rgba(255,255,255,0.04)}
+
+/* SCORES */
+.scores{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px 3rem;
+  margin-bottom:2.5rem;
+}
+
+.score-row{display:flex;flex-direction:column;gap:6px}
+.score-head{display:flex;justify-content:space-between}
+.score-lbl{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3)}
+.score-val{font-size:0.7rem;color:var(--text-2);font-variant-numeric:tabular-nums}
+
+.track{height:1px;background:var(--border-light);overflow:hidden}
+.fill{
+  height:100%;
+  background:var(--text-2);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1);
+}
+.ai-card.vis .fill{transform:scaleX(1)}
+
+/* BODY TEXT */
+.card-body{
+  color:var(--text-2);
+  font-size:0.88rem;
+  line-height:1.9;
+  margin-bottom:2.5rem;
+  border-top:1px solid var(--border);
+  padding-top:2rem;
+}
+.card-body p{margin-bottom:0.9rem}
+.card-body p:last-child{margin-bottom:0}
+
+/* ATTRS */
+.card-attrs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  margin-bottom:2.5rem;
+}
+
+.attr{
+  background:var(--card-bg);
+  padding:1.25rem;
+}
+.attr-l{
+  font-size:0.62rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:5px;
+}
+.attr-v{
+  font-size:0.88rem;
+  color:var(--white);
+  font-weight:500;
+}
+
+/* PROS / CONS */
+.pc{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+}
+
+.pros,.cons{
+  background:var(--card-bg);
+  padding:1.5rem 1.5rem 1.75rem;
+}
+
+.pc-title{
+  font-size:0.62rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:1rem;
+  padding-bottom:0.75rem;
+  border-bottom:1px solid var(--border);
+}
+
+.pc ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.pc li{
+  font-size:0.82rem;
+  color:var(--text-2);
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+}
+.pros li::before{content:'';display:inline-block;width:4px;height:4px;background:var(--text-2);border-radius:50%;flex-shrink:0;margin-top:6px}
+.cons li::before{content:'';display:inline-block;width:4px;height:1px;background:var(--text-3);flex-shrink:0;margin-top:8px}
+
+/* COMPARISON */
+.comp-wrap{
+  border:1px solid var(--border);
+  overflow-x:auto;
+}
+
+table{width:100%;border-collapse:collapse;font-size:0.82rem}
+
+thead th{
+  padding:1rem 1.25rem;
+  text-align:left;
+  font-size:0.62rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  border-bottom:1px solid var(--border);
+  background:var(--off-black);
+  font-weight:500;
+}
+
+tbody td{
+  padding:1rem 1.25rem;
+  border-bottom:1px solid var(--border);
+  color:var(--text-2);
+  vertical-align:middle;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,0.02)}
+
+.t-name{
+  font-family:'DM Serif Display',serif;
+  font-size:1.05rem;
+  color:var(--white);
+}
+
+.dot-yes{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--text-2)}
+.dot-partial{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--text-3)}
+.dot-no{display:inline-block;width:7px;height:1px;background:var(--border-light);margin-bottom:3px}
+
+/* GUIDE */
+.guide-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+
+.guide-cell{
+  background:var(--card-bg);
+  padding:2rem;
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.guide-cell.vis{opacity:1;transform:none}
+.guide-cell:hover{background:var(--surface)}
+
+.guide-q{
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  color:var(--text-3);
+  line-height:1.7;
+  margin-bottom:1rem;
+  text-transform:uppercase;
+}
+
+.guide-a{
+  font-family:'DM Serif Display',serif;
+  font-size:1.3rem;
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.guide-arrow{font-size:0.9rem;color:var(--text-3)}
+
+/* FOOTER */
+footer{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:4rem 2rem 5rem;
+  border-top:1px solid var(--border);
+}
+
+.foot-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.5rem;
+  color:var(--white);
+  margin-bottom:1rem;
+  display:block;
+}
+
+footer p{
+  font-size:0.75rem;
+  letter-spacing:0.08em;
+  color:var(--text-3);
+  line-height:2;
+}
+
+/* KEYFRAMES */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:720px){
+  nav ul{display:none}
+  nav{padding:0 1.5rem}
+  .hero h1{font-size:3rem}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(3){border-right:1px solid var(--border)}
+  .card-top{flex-direction:column}
+  .card-attrs{grid-template-columns:1fr 1fr}
+  .scores{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+  .ai-card{padding:2rem}
+  .section{padding:5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Intelligence</a>
+  <ul>
+    <li><a href="#ranking">Ranking</a></li>
+    <li><a href="#comparativa">Comparativa</a></li>
+    <li><a href="#guia">Guia</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow"><span></span>Mayo 2026 — Edicion Anual<span></span></div>
+  <h1>Las cinco<br><em>inteligencias</em><br>que lideran el mundo</h1>
+  <p class="hero-desc">Analisis exhaustivo de los modelos de lenguaje que estan redefiniendo como trabajamos, creamos e investigamos en 2026.</p>
+  <div class="hero-actions">
+    <a href="#ranking" class="btn btn-solid">Ver ranking</a>
+    <a href="#comparativa" class="btn btn-ghost">Tabla comparativa</a>
+  </div>
+  <div class="scroll-line"><span>Desplazar</span></div>
+</div>
+
+<div class="rule"></div>
+
+<div class="stats">
+  <div class="stat"><span class="stat-n">5</span><span class="stat-l">IAs analizadas</span></div>
+  <div class="stat"><span class="stat-n">400M+</span><span class="stat-l">Usuarios activos</span></div>
+  <div class="stat"><span class="stat-n">41%</span><span class="stat-l">Codigo generado por IA</span></div>
+  <div class="stat"><span class="stat-n">2026</span><span class="stat-l">El ano de la IA de frontera</span></div>
+</div>
+
+<div class="rule"></div>
+
+<section class="section" id="ranking">
+  <div class="sec-eyebrow">Ranking definitivo</div>
+  <h2 class="sec-title">Analisis<br>en profundidad</h2>
+  <p class="sec-sub">Cada modelo evaluado en razonamiento, escritura, codigo, velocidad y precio. Sin patrocinios, sin sesgos.</p>
+
+  <!-- CARD 1 — CLAUDE -->
+  <div class="ai-card">
+    <div class="card-top">
+      <div class="card-left">
+        <div class="rank-num">01</div>
+        <div class="card-meta">
+          <div class="card-cat">Mejor global — Escritura y razonamiento</div>
+          <div class="card-name">Claude</div>
+          <div class="card-maker">Anthropic</div>
+        </div>
+      </div>
+      <a href="https://claude.ai" target="_blank" class="card-btn">Abrir plataforma</a>
+    </div>
+
+    <div class="scores">
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Razonamiento</span><span class="score-val">97</span></div>
+        <div class="track"><div class="fill" style="width:97%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Escritura</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Programacion</span><span class="score-val">95</span></div>
+        <div class="track"><div class="fill" style="width:95%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Confiabilidad</span><span class="score-val">98</span></div>
+        <div class="track"><div class="fill" style="width:98%"></div></div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <p>Claude es la gran revelacion de 2026. Lo que comenzó como una alternativa de nicho se ha convertido en la referencia para profesionales que priorizan la calidad sobre la cantidad. Desarrollado por Anthropic con un enfoque en seguridad y alineacion, Claude destaca por algo que ningun otro modelo ha logrado replicar: un razonamiento con matices genuinamente sutiles.</p>
+      <p>La familia Claude 4 — con Opus 4.6 y Sonnet 4.6 — lidera benchmarks de programacion con un 77.2% en SWE-bench, convirtiendose en el motor preferido de herramientas profesionales como Cursor y Windsurf. Su ventana de contexto extendida permite analizar documentos completos, proyectos de codigo complejos o transcripciones largas en una sola sesion.</p>
+    </div>
+
+    <div class="card-attrs">
+      <div class="attr"><div class="attr-l">Tier gratuito</div><div class="attr-v">Sonnet 4.5</div></div>
+      <div class="attr"><div class="attr-l">Plan Pro</div><div class="attr-v">$20 / mes</div></div>
+      <div class="attr"><div class="attr-l">Plan Max</div><div class="attr-v">$100 / mes</div></div>
+      <div class="attr"><div class="attr-l">Ideal para</div><div class="attr-v">Escritura profesional</div></div>
+    </div>
+
+    <div class="pc">
+      <div class="pros">
+        <div class="pc-title">Fortalezas</div>
+        <ul>
+          <li>Razonamiento mas matizado del mercado</li>
+          <li>Calidad de escritura sin igual</li>
+          <li>Codigo limpio y bien documentado</li>
+          <li>Minimas alucinaciones</li>
+          <li>Contexto extendido</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="pc-title">Limitaciones</div>
+        <ul>
+          <li>No genera imagenes</li>
+          <li>Busqueda web solo en planes de pago</li>
+          <li>Plan Max a $100 es elevado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2 — CHATGPT -->
+  <div class="ai-card">
+    <div class="card-top">
+      <div class="card-left">
+        <div class="rank-num">02</div>
+        <div class="card-meta">
+          <div class="card-cat">Mas completo — Ecosistema global</div>
+          <div class="card-name">ChatGPT</div>
+          <div class="card-maker">OpenAI</div>
+        </div>
+      </div>
+      <a href="https://chatgpt.com" target="_blank" class="card-btn">Abrir plataforma</a>
+    </div>
+
+    <div class="scores">
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Razonamiento</span><span class="score-val">95</span></div>
+        <div class="track"><div class="fill" style="width:95%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Versatilidad</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Generacion de imagenes</span><span class="score-val">93</span></div>
+        <div class="track"><div class="fill" style="width:93%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Ecosistema</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <p>Con mas de 400 millones de usuarios semanales activos, ChatGPT es la aplicacion de crecimiento mas rapido en la historia de la tecnologia. GPT-5.2 unifica razonamiento avanzado, generacion de imagenes con DALL-E y video con Sora 2 en una sola plataforma cohesiva.</p>
+      <p>Su ecosistema es imbatible: miles de integraciones, GPTs especializados por industria y una comunidad global que genera recursos constantemente. Si solo fueras a elegir una unica IA, ChatGPT ofrece la mayor cobertura de casos de uso en un solo lugar.</p>
+    </div>
+
+    <div class="card-attrs">
+      <div class="attr"><div class="attr-l">Usuarios semanales</div><div class="attr-v">400M+</div></div>
+      <div class="attr"><div class="attr-l">Plan Plus</div><div class="attr-v">$20 / mes</div></div>
+      <div class="attr"><div class="attr-l">Genera video</div><div class="attr-v">Sora 2</div></div>
+      <div class="attr"><div class="attr-l">Ideal para</div><div class="attr-v">Uso general</div></div>
+    </div>
+
+    <div class="pc">
+      <div class="pros">
+        <div class="pc-title">Fortalezas</div>
+        <ul>
+          <li>Ecosistema mas amplio del mercado</li>
+          <li>Imagenes y video integrados</li>
+          <li>Miles de plugins especializados</li>
+          <li>Actualizaciones frecuentes</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="pc-title">Limitaciones</div>
+        <ul>
+          <li>Limites estrictos en tier gratuito</li>
+          <li>Tasa de alucinaciones mayor que Claude</li>
+          <li>Escritura menos natural</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3 — GEMINI -->
+  <div class="ai-card">
+    <div class="card-top">
+      <div class="card-left">
+        <div class="rank-num">03</div>
+        <div class="card-meta">
+          <div class="card-cat">Mejor integracion — Ecosistema Google</div>
+          <div class="card-name">Gemini</div>
+          <div class="card-maker">Google DeepMind</div>
+        </div>
+      </div>
+      <a href="https://gemini.google.com" target="_blank" class="card-btn">Abrir plataforma</a>
+    </div>
+
+    <div class="scores">
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Razonamiento</span><span class="score-val">96</span></div>
+        <div class="track"><div class="fill" style="width:96%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Integracion</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Contexto largo</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Tier gratuito</span><span class="score-val">98</span></div>
+        <div class="track"><div class="fill" style="width:98%"></div></div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <p>Gemini 2.5 Pro ofrece la ventana de contexto mas extensa del mercado — un millon de tokens — y se integra de forma nativa con Gmail, Drive, Docs y todo el entorno Google. Para quienes ya viven dentro del ecosistema de Google, la adopcion de Gemini es una decision casi automatica.</p>
+      <p>Su tier gratuito es el mas generoso de todos los modelos de primera linea en 2026. Destaca especialmente en procesamiento multimodal y en tareas de razonamiento sobre documentos extensos, presentaciones y transcripciones de reuniones.</p>
+    </div>
+
+    <div class="card-attrs">
+      <div class="attr"><div class="attr-l">Contexto maximo</div><div class="attr-v">1M tokens</div></div>
+      <div class="attr"><div class="attr-l">Plan Advanced</div><div class="attr-v">$19.99 / mes</div></div>
+      <div class="attr"><div class="attr-l">Integra con</div><div class="attr-v">Gmail, Drive, Docs</div></div>
+      <div class="attr"><div class="attr-l">Ideal para</div><div class="attr-v">Usuarios Google</div></div>
+    </div>
+
+    <div class="pc">
+      <div class="pros">
+        <div class="pc-title">Fortalezas</div>
+        <ul>
+          <li>Integracion nativa con todo Google</li>
+          <li>Contexto de 1M tokens</li>
+          <li>Tier gratuito muy generoso</li>
+          <li>Multimodal avanzado</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="pc-title">Limitaciones</div>
+        <ul>
+          <li>Privacidad cuestionable con Workspace</li>
+          <li>Escritura menos natural que Claude</li>
+          <li>Dependencia del ecosistema Google</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4 — PERPLEXITY -->
+  <div class="ai-card">
+    <div class="card-top">
+      <div class="card-left">
+        <div class="rank-num">04</div>
+        <div class="card-meta">
+          <div class="card-cat">Mejor busqueda — Informacion verificada</div>
+          <div class="card-name">Perplexity</div>
+          <div class="card-maker">Perplexity AI</div>
+        </div>
+      </div>
+      <a href="https://perplexity.ai" target="_blank" class="card-btn">Abrir plataforma</a>
+    </div>
+
+    <div class="scores">
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Busqueda web</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Fuentes</span><span class="score-val">98</span></div>
+        <div class="track"><div class="fill" style="width:98%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Actualidad</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Precision</span><span class="score-val">94</span></div>
+        <div class="track"><div class="fill" style="width:94%"></div></div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <p>Perplexity ha consolidado en 2026 un modelo de respuesta radicalmente diferente: cada afirmacion viene respaldada por fuentes citadas y verificables en tiempo real. Con un 10.1% de cuota en el mercado de busquedas, esta desafiando directamente el negocio central de Google.</p>
+      <p>Periodistas, investigadores y analistas lo usan como herramienta principal precisamente porque no da informacion desactualizada ni inventa hechos. Si tu flujo de trabajo depende de datos recientes y verificables, Perplexity es insuperable en su categoria.</p>
+    </div>
+
+    <div class="card-attrs">
+      <div class="attr"><div class="attr-l">Cuota de busqueda</div><div class="attr-v">10.1%</div></div>
+      <div class="attr"><div class="attr-l">Plan Pro</div><div class="attr-v">$20 / mes</div></div>
+      <div class="attr"><div class="attr-l">Fuentes</div><div class="attr-v">Siempre citadas</div></div>
+      <div class="attr"><div class="attr-l">Ideal para</div><div class="attr-v">Investigacion</div></div>
+    </div>
+
+    <div class="pc">
+      <div class="pros">
+        <div class="pc-title">Fortalezas</div>
+        <ul>
+          <li>Informacion siempre actualizada</li>
+          <li>Fuentes verificadas y citadas</li>
+          <li>La mejor alternativa a Google</li>
+          <li>Tier gratuito funcional</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="pc-title">Limitaciones</div>
+        <ul>
+          <li>Capacidades creativas limitadas</li>
+          <li>Limite de busquedas Pro en gratuito</li>
+          <li>No genera imagenes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 5 — DEEPSEEK -->
+  <div class="ai-card">
+    <div class="card-top">
+      <div class="card-left">
+        <div class="rank-num">05</div>
+        <div class="card-meta">
+          <div class="card-cat">Mejor valor — Open source gratuito</div>
+          <div class="card-name">DeepSeek</div>
+          <div class="card-maker">DeepSeek AI</div>
+        </div>
+      </div>
+      <a href="https://chat.deepseek.com" target="_blank" class="card-btn">Abrir plataforma</a>
+    </div>
+
+    <div class="scores">
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Programacion</span><span class="score-val">92</span></div>
+        <div class="track"><div class="fill" style="width:92%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Eficiencia</span><span class="score-val">98</span></div>
+        <div class="track"><div class="fill" style="width:98%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Accesibilidad</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-head"><span class="score-lbl">Control privado</span><span class="score-val">99</span></div>
+        <div class="track"><div class="fill" style="width:99%"></div></div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <p>DeepSeek demostro que se pueden alcanzar capacidades de frontera sin los presupuestos multimillonarios de OpenAI o Google. Este modelo chino de codigo abierto, con un billon de parametros, es completamente gratuito y rinde al nivel de los modelos mas costosos del mercado en tareas de programacion y razonamiento matematico.</p>
+      <p>Su arquitectura open source permite a empresas y desarrolladores ejecutarlo en sus propios servidores, con control total sobre los datos. Para equipos que priorizan privacidad, coste cero o personalizacion avanzada, DeepSeek es la decision mas inteligente de 2026.</p>
+    </div>
+
+    <div class="card-attrs">
+      <div class="attr"><div class="attr-l">Precio</div><div class="attr-v">Completamente gratis</div></div>
+      <div class="attr"><div class="attr-l">Tipo</div><div class="attr-v">Open source</div></div>
+      <div class="attr"><div class="attr-l">Parametros</div><div class="attr-v">1 billon</div></div>
+      <div class="attr"><div class="attr-l">Ideal para</div><div class="attr-v">Desarrolladores</div></div>
+    </div>
+
+    <div class="pc">
+      <div class="pros">
+        <div class="pc-title">Fortalezas</div>
+        <ul>
+          <li>Completamente gratuito</li>
+          <li>Open source — control total</li>
+          <li>Excelente en programacion</li>
+          <li>Ejecutable de forma local</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="pc-title">Limitaciones</div>
+        <ul>
+          <li>Servidores lentos en horas pico</li>
+          <li>Escritura creativa menos refinada</li>
+          <li>Censura en temas politicos sensibles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section" id="comparativa">
+  <div class="sec-eyebrow">Tabla comparativa</div>
+  <h2 class="sec-title">Vista rapida</h2>
+  <p class="sec-sub">Comparacion directa de capacidades para facilitar la decision.</p>
+
+  <div class="comp-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Tier gratis</th>
+          <th>Imagenes</th>
+          <th>Busq. web</th>
+          <th>Codigo</th>
+          <th>Escritura</th>
+          <th>Precio Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="t-name">Claude</span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-no"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td>$20 / mes</td>
+        </tr>
+        <tr>
+          <td><span class="t-name">ChatGPT</span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td>$20 / mes</td>
+        </tr>
+        <tr>
+          <td><span class="t-name">Gemini</span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td>$19.99 / mes</td>
+        </tr>
+        <tr>
+          <td><span class="t-name">Perplexity</span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-no"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td>$20 / mes</td>
+        </tr>
+        <tr>
+          <td><span class="t-name">DeepSeek</span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-no"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td><span class="dot-yes"></span></td>
+          <td><span class="dot-partial"></span></td>
+          <td>Gratis</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="section" id="guia">
+  <div class="sec-eyebrow">Guia de decision</div>
+  <h2 class="sec-title">Segun tu<br>caso de uso</h2>
+  <p class="sec-sub">Recomendacion directa por perfil de usuario.</p>
+
+  <div class="guide-grid">
+    <div class="guide-cell">
+      <div class="guide-q">Para escribir y crear contenido profesional</div>
+      <div class="guide-a"><span class="guide-arrow">—</span>Claude</div>
+    </div>
+    <div class="guide-cell">
+      <div class="guide-q">Para tener todo en una sola herramienta</div>
+      <div class="guide-a"><span class="guide-arrow">—</span>ChatGPT</div>
+    </div>
+    <div class="guide-cell">
+      <div class="guide-q">Si ya usas Gmail y Google Drive</div>
+      <div class="guide-a"><span class="guide-arrow">—</span>Gemini</div>
+    </div>
+    <div class="guide-cell">
+      <div class="guide-q">Para investigar con fuentes verificadas</div>
+      <div class="guide-a"><span class="guide-arrow">—</span>Perplexity</div>
+    </div>
+    <div class="guide-cell">
+      <div class="guide-q">Para desarrollar sin coste ni limites</div>
+      <div class="guide-a"><span class="guide-arrow">—</span>DeepSeek</div>
+    </div>
+    <div class="guide-cell">
+      <div class="guide-q">Recomendacion avanzada</div>
+      <div class="guide-a"><span class="guide-arrow">—</span>Combinalas</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-logo">Intelligence 2026</span>
+  <p>Analisis independiente — Actualizado Mayo 2026</p>
+  <p>Contenido educativo sobre inteligencia artificial</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:0.08});
+
+document.querySelectorAll('.ai-card, .stat, .guide-cell').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
